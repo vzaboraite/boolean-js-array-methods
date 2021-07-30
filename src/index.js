@@ -174,9 +174,11 @@ console.log("expensiveProducts: ", expensiveProducts);
 // - that takes an array as a parameter
 // - returns an array of products that cost less than £1000
 
-// const cheapProducts = function();
+const cheapProducts = appleStore.products.filter(
+  (product) => product.price < 1000
+);
 
-// console.log("cheapProducts: ", cheapProducts);
+console.log("cheapProducts: ", cheapProducts);
 
 // ----- Section ----- **
 
@@ -184,7 +186,11 @@ console.log("expensiveProducts: ", expensiveProducts);
 // - that takes an array as a parameter
 // - returns an array of products that have an incoming delivery
 
-// const productsThatNeedToBeReceived = function();
+const productsThatNeedToBeReceived = appleStore.products.filter(
+  (product) => product.stock.incomingDelivery === true
+);
+
+console.log("productsThatNeedToBeReceived: ", productsThatNeedToBeReceived);
 
 // ----- Section -----
 
@@ -192,7 +198,11 @@ console.log("expensiveProducts: ", expensiveProducts);
 // - that takes an array as a parameter
 // - returns an array of products that are out of stock
 
-// const outOfStockProducts = function();
+const outOfStockProducts = appleStore.products.filter(
+  (product) => product.stock.quantity === 0
+);
+
+console.log("outOfStockProducts: ", outOfStockProducts);
 
 // ----- Section -----
 
@@ -200,7 +210,12 @@ console.log("expensiveProducts: ", expensiveProducts);
 // - that takes an array as a parameter
 // - returns an array of products that have a quantity that is less than 100 and have no incoming delivery
 
-// const productsThatNeedToBeOrdered = function();
+const productsThatNeedToBeOrdered = appleStore.products.filter(
+  (product) =>
+    product.stock.quantity < 100 && product.stock.incomingDelivery === false
+);
+
+console.log("productsThatNeedToBeOrdered: ", productsThatNeedToBeOrdered);
 
 // ----- Section ----- **
 
@@ -208,7 +223,11 @@ console.log("expensiveProducts: ", expensiveProducts);
 // - that takes an array as a parameter
 // - returns an array of products of the type "tablet"
 
-// const tablets = function();
+const tablets = appleStore.products.filter(
+  (product) => product.type === "tablet"
+);
+
+console.log("tablets: ", tablets);
 
 // ----- Section -----
 
@@ -216,23 +235,30 @@ console.log("expensiveProducts: ", expensiveProducts);
 // - that takes an array as a parameter
 // - returns an array of products of the type "computer"
 
-// const computers = function();
+const computers = appleStore.products.filter(
+  (product) => product.type === "computer"
+);
 
+console.log("computers: ", computers);
 // ----- Section ----- **
 
 // Write a function here...
 // - that takes an array as a parameter
 // - returns an object that represents an "iMac"
 
-// const iMac = function();
-
+const iMac = appleStore.products.find((product) => product.name === "iMac");
+console.log("iMac: ", iMac);
 // ----- Section -----
 
 // Write a function here...
 // - that takes an array as a parameter
 // - returns an object that represents an "iPhone 12"
 
-// const iPhone12 = function();
+const iPhone12 = appleStore.products.find(
+  (product) => product.name === "iPhone 12"
+);
+
+console.log("iPhone12: ", iPhone12);
 
 // ----- Section -----
 
@@ -240,7 +266,11 @@ console.log("expensiveProducts: ", expensiveProducts);
 // - that takes an array as a parameter
 // - returns an object that represents an "iPad Mini"
 
-// const iPadMini = function();
+const iPadMini = appleStore.products.find(
+  (product) => product.name === "iPad mini"
+);
+
+console.log("iPadMini: ", iPadMini);
 
 // ----- CHALLENGE -----
 
@@ -249,7 +279,12 @@ console.log("expensiveProducts: ", expensiveProducts);
 // - returns an array of unique product types
 //    => ["mobile", "computer", "tablet"]
 
-// const productTypes = function();
+const productTypes = appleStore.products.map((product) => product.type);
+const productUniqueTypes = productTypes.filter(
+  (type, i, types) => types.indexOf(type) === i
+);
+
+console.log(productUniqueTypes);
 
 // CART EXERCISES
 
