@@ -327,9 +327,13 @@ const cart = [
 
 // Write a function here...
 // - that takes an array as a parameter
-// - returns a number that rerpresents the total of the items in the cart
+// - returns a number that rerpresents the total price of the items in the cart
 
-// const totalPrice = function()
+let totalPrice = 0;
+
+cart.forEach((item) => (totalPrice += item.product.price * item.quantity));
+
+console.log("totalPrice: ", totalPrice);
 
 // ----- Section ----- **
 
@@ -337,8 +341,11 @@ const cart = [
 // - that takes an array as a parameter
 // - returns a number that rerpresents the quantity of the items in the cart
 
-// const quantityOfItemsInCart = function()
+let quantityOfItemsInCart = 0;
 
+cart.forEach((item) => (quantityOfItemsInCart += item.quantity));
+
+console.log("quantityOfItemsInCart: ", quantityOfItemsInCart);
 // ----- Section ----- **
 
 // Write a function here...
@@ -346,8 +353,15 @@ const cart = [
 // - returns a string of the information about a product in the cart
 //      => "iPhone 12 | Mobile - £1400 x 2 || £2800"
 
-// const recieptRow = function()
+// TODO: how to get just one row instead of all four?
+let recieptRow = cart
+  .map(
+    (item) =>
+      `${item.product.name} | ${item.product.type} - ${item.product.price} x ${item.quantity} || ${totalPrice}\n`
+  )
+  .toString();
 
+console.log(recieptRow);
 // ----- Section ----- **
 
 // Write a function here...
