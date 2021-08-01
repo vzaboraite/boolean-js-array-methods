@@ -384,3 +384,34 @@ function getReceiptMessage(items) {
 const receiptMessage = getReceiptMessage(cart);
 
 console.log(receiptMessage);
+
+// REUSABLE/UTILITY FUNCTIONS
+
+// 1. Create filter() function
+// - input: array and function, that defines how the array will be filtered
+// - output: filteredArray[]
+
+// 2. how array is filtered?
+// 2.1 A: run for loop or use array method forEach() to run through array elements
+
+// 3. how to set filteredArray[]?
+// 3.1 A: use if statement to check if the function that we are passing through
+//  filter() evaluates to true||false.
+//  if function evaluates to true, filteredArray.push(element)
+function filter(arr, func) {
+  const filteredArray = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    const elem = arr[i];
+
+    if (func(elem)) {
+      filteredArray.push(elem);
+    }
+  }
+
+  return filteredArray;
+}
+
+console.log(
+  filter(jeepStore.products, (item) => item.stock.incomingDelivery === false)
+);
