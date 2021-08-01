@@ -353,15 +353,16 @@ console.log("quantityOfItemsInCart: ", quantityOfItemsInCart);
 // - returns a string of the information about a product in the cart
 //      => "iPhone 12 | Mobile - £1400 x 2 || £2800"
 
-// TODO: how to get just one row instead of all four?
-let recieptRow = cart
-  .map(
-    (item) =>
-      `${item.product.name} | ${item.product.type} - ${item.product.price} x ${item.quantity} || ${totalPrice}\n`
-  )
-  .toString();
+function getRecieptRow(item) {
+  let subTotal = item.product.price * item.quantity;
+  return `${item.product.name} | ${item.product.type} - ${item.product.price} x ${item.quantity} || ${subTotal}\n`;
+}
 
-console.log(recieptRow);
+console.log(getRecieptRow(cart[0]));
+console.log(getRecieptRow(cart[1]));
+console.log(getRecieptRow(cart[2]));
+console.log(getRecieptRow(cart[3]));
+
 // ----- Section ----- **
 
 // Write a function here...
@@ -369,6 +370,17 @@ console.log(recieptRow);
 // - returns a string with the variosu rows on the reciept
 // TIP: Re-use the above function for "receiptRow"
 
-// const receiptMessage = function()
+function getReceiptMessage(items) {
+  let result = `***Apple store***\n\n${items
+    .map(getRecieptRow)
+    .join(
+      ""
+    )}\n\nTotal items #${quantityOfItemsInCart}\n\nTotal to pay: £${totalPrice}`;
 
-// console.log("receiptMessage: ", receiptMessage)
+  console.log(typeof result);
+  return result;
+}
+
+const receiptMessage = getReceiptMessage(cart);
+
+console.log(receiptMessage);
